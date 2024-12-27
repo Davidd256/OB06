@@ -23,10 +23,18 @@ class Game:
 
     def start(self):
         print("Игра начата!")
+        # Случайный выбор, кто начинает
+        turn = random.choice(['player', 'computer'])
+        print(f"{turn.capitalize()} начинает первым!")
+
         while self.player.is_alive() and self.computer.is_alive():
-            self.player_turn()
-            if self.computer.is_alive():
+            if turn == 'player':
+                self.player_turn()
+                turn = 'computer'  # Меняем ход на компьютер
+            else:
                 self.computer_turn()
+                turn = 'player'  # Меняем ход на игрока
+
         self.declare_winner()
 
     def player_turn(self):
@@ -47,3 +55,4 @@ if __name__ == "__main__":
     player_name = input("Введите имя вашего героя: ")
     game = Game(player_name)
     game.start()
+
