@@ -24,10 +24,13 @@ class Game:
     def start(self):
         print("Игра начата!")
         # Случайный выбор, кто начинает
-        turn = random.choice(['player', 'computer'])
-        print(f"{turn.capitalize()} начинает первым!")
+        #turn = random.choice(['player', 'computer'])
+        #print(f"{turn.capitalize()} начинает первым!")
 
         while self.player.is_alive() and self.computer.is_alive():
+            # Случайный выбор, кто атакует
+            turn = random.choice(['player', 'computer'])
+            print(f"{turn.capitalize()} атакует!")
             if turn == 'player':
                 self.player_turn()
                 turn = 'computer'  # Меняем ход на компьютер
